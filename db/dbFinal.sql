@@ -660,7 +660,6 @@ CREATE TABLE FinancialPackage
         ON DELETE CASCADE
 );
 
-DELETE FROM FinancialPackage;
 INSERT INTO FinancialPackage (FFCode, CollegeID, LowerRange, UpperRange, AmountOfAid, NumSemesters)
 VALUES (1, 73-533-0330, 10000, 20000, 10000000, 8),
        (2, 73-533-0330, 5, 25, 1000, 8),
@@ -681,11 +680,9 @@ CREATE TABLE Scholarships
         ON DELETE CASCADE
 );
 
-DELETE FROM Scholarships;
 INSERT INTO Scholarships (SSCode, FFCode, ScholarshipName, ScholarshipDescription, Amount)
 VALUES (1, 1, 'Deans', 'For students with excellent academic performance', 25000),
        (2, 2, 'Need-based', 'For students whose families don\'t make enough money', 100000);
-
 
 -- Creating the StudentColleges Table
 DROP TABLE IF EXISTS StudentColleges;
@@ -707,12 +704,11 @@ CREATE TABLE StudentColleges
         ON DELETE CASCADE
 );
 
-DELETE FROM StudentColleges;
 INSERT INTO StudentColleges (CollegeID, StudentID, SAT, ACT, Accepted, Rejected, Waitlisted)
-VALUES (53-496-2253, 73-533-0330, NULL, NULL, 'No', 'No', 'No'),
-       (44-412-8497, 30-227-9288, 100, NULL, 'No', 'Yes', 'No'),
-       (28-594-3561, 88-782-9868, 1500, 34, 'Yes', 'No', 'No'),
-       (07-812-5172, 43-173-1173, NULL, 36, 'No', 'No', 'No');
+VALUES (53-496-2253, 05-389-8959, NULL, NULL, 'No', 'No', 'No'),
+       (44-412-8497, 85-158-4705, 100, NULL, 'No', 'Yes', 'No'),
+       (28-594-3561, 77-637-3900, 1500, 34, 'Yes', 'No', 'No'),
+       (07-812-5172, 21-615-8442, NULL, 36, 'No', 'No', 'No');
 
 -- Creating the AlumniChats Table
 DROP TABLE IF EXISTS AlumniChats;
@@ -729,12 +725,11 @@ CREATE TABLE AlumniChats
         ON DELETE CASCADE
 );
 
-DELETE FROM AlumniChats;
 INSERT INTO AlumniChats (StudentID, AlumniID, CounselorID, AlumniName, AlumniEmail)
-VALUES (1, 2, 1, 'John Doe', 'john@gmail.com'),
-       (100, 3, 2, 'Caleb', 'john@gmail.com'),
-       (1000, 9, 3, 'Jake', 'john@gmail.com'),
-       (1000, 10, 4, 'Jose Caulderon', 'john@gmail.com');
+VALUES (91-149-5459, 2, 63-154-1693, 'John Doe', 'john@gmail.com'),
+       (45-971-3356, 3, 60-796-3984, 'Caleb', 'john@gmail.com'),
+       (00-137-4501, 9, 26-051-9712, 'Jake', 'john@gmail.com'),
+       (9-810-4703, 10, 70-746-5096, 'Jose Caulderon', 'john@gmail.com');
 
 -- Creating the AlumChatContent Table
 DROP TABLE IF EXISTS AlumChatContent;
@@ -749,12 +744,10 @@ CREATE TABLE AlumChatContent
         ON DELETE CASCADE
 );
 
-DELETE FROM AlumChatContent;
 INSERT INTO AlumChatContent (Content, StudentID, AlumniID)
-VALUES ('Hi, I want to learn more!', 1, 2),
-       ('What do you wanna lear', 1, 2),
-       ('Hi, Im Jose!', 1000, 10);
-
+VALUES ('Hi, I want to learn more!', 45-971-3356, 3),
+       ('What do you wanna lear', 00-137-4501, 9),
+       ('Hi, Im Jose!', 9-810-4703, 10);
 
 -- Creating the CollegePreferences Table
 DROP TABLE IF EXISTS CollegePreferences;
@@ -771,10 +764,9 @@ CREATE TABLE CollegePreferences
         ON DELETE CASCADE
 );
 
-DELETE FROM CollegePreferences;
 INSERT INTO CollegePreferences (CPID, StudentID, GreekLife, Size, Temperature)
-VALUES (1, 1, 'Yes', 'Large', 'Hot'),
-       (2, 10, 'Yes', 'Small', 'Cold');
+VALUES (1, 45-971-3356, 'Yes', 'Large', 'Hot'),
+       (2, 00-137-4501, 'Yes', 'Small', 'Cold');
 
 -- Creating the CollegePrefLocation Table
 DROP TABLE IF EXISTS CollegePrefLocation;
@@ -788,7 +780,6 @@ CREATE TABLE CollegePrefLocation
         ON DELETE CASCADE
 );
 
-DELETE FROM CollegePrefLocation;
 INSERT INTO CollegePrefLocation (Location, CPID)
 VALUES ('Boston', 1),
        ('LA', 1),
@@ -807,12 +798,11 @@ CREATE TABLE AdmissionsPlan
         ON DELETE CASCADE
 );
 
-DELETE FROM AdmissionsPlan;
 INSERT INTO AdmissionsPlan (AdmissionsID, CounselorID)
-VALUES (1, 1),
-       (5, 1),
-       (10, 2),
-       (5, 3);
+VALUES (1, 63-154-1693),
+       (5, 63-154-1693),
+       (10, 63-154-1693),
+       (6, 63-154-1693);
 
 -- Creating the AdminPlanCollCat Table
 DROP TABLE IF EXISTS AdminPlanCollCat;
@@ -827,8 +817,7 @@ CREATE TABLE AdminPlanCollCat
         ON DELETE CASCADE
 );
 
-DELETE FROM AdminPlanCollCat;
 INSERT INTO AdminPlanCollCat (CollegeID, Category, AdmissionsID)
 VALUES (10, 'Safety', 1),
-       (15, 'Safety', 1),
-       (20, 'Target', 1);
+       (15, 'Safety', 5),
+       (20, 'Target', 6);

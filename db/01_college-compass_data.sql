@@ -1,19 +1,5 @@
-DROP DATABASE IF EXISTS collegeCompass;
-CREATE DATABASE collegeCompass;
+USE CollegeCompass;
 
-USE collegeCompass;
-
-grant all privileges on collegeCompass.* to 'webapp'@'%';
-flush privileges;
-
-
-DROP TABLE IF EXISTS HighSchool;
-CREATE TABLE HighSchool(
-   HighSchoolName VARCHAR(16) NOT NULL
-  ,Size           INTEGER  NOT NULL
-  ,SchoolRank     INTEGER  NOT NULL
-  ,SchoolID       INTEGER  NOT NULL PRIMARY KEY 
-);
 INSERT INTO HighSchool(HighSchoolName,Size,SchoolRank,SchoolID) VALUES ('Golden Leaf',81073,908,1);
 INSERT INTO HighSchool(HighSchoolName,Size,SchoolRank,SchoolID) VALUES ('Golf',31328,2565,2);
 INSERT INTO HighSchool(HighSchoolName,Size,SchoolRank,SchoolID) VALUES ('Basil',69066,1655,3);
@@ -141,12 +127,6 @@ INSERT INTO HighSchool(HighSchoolName,Size,SchoolRank,SchoolID) VALUES ('Twin Pi
 INSERT INTO HighSchool(HighSchoolName,Size,SchoolRank,SchoolID) VALUES ('Shasta',59725,1152,125);
 
 
-DROP TABLE IF EXISTS Counselors;
-CREATE TABLE Counselors(
-   FirstName   VARCHAR(20) NOT NULL
-  ,LastName    VARCHAR(20) NOT NULL
-  ,CounselorID INTEGER  NOT NULL PRIMARY KEY 
-);
 INSERT INTO Counselors(FirstName,LastName,CounselorID) VALUES ('Farica','Innocent',1);
 INSERT INTO Counselors(FirstName,LastName,CounselorID) VALUES ('Clementius','Frentz',2);
 INSERT INTO Counselors(FirstName,LastName,CounselorID) VALUES ('Melonie','Gladdolph',3);
@@ -199,13 +179,6 @@ INSERT INTO Counselors(FirstName,LastName,CounselorID) VALUES ('Zola','Stenner',
 INSERT INTO Counselors(FirstName,LastName,CounselorID) VALUES ('Cordula','Issacof',50);
 
 
-DROP TABLE IF EXISTS Colleges;
-CREATE TABLE Colleges(
-   CollegeName    VARCHAR(58) NOT NULL
-  ,EnrollmentSize INTEGER  NOT NULL
-  ,AcceptanceRate VARCHAR(4) NOT NULL
-  ,CollegeID      INTEGER  NOT NULL PRIMARY KEY 
-);
 INSERT INTO Colleges(CollegeName,EnrollmentSize,AcceptanceRate,CollegeID) VALUES ('Kunstakademie Düsseldorf.',10878,'98%',1);
 INSERT INTO Colleges(CollegeName,EnrollmentSize,AcceptanceRate,CollegeID) VALUES ('University of Health and Science',107024,'41%',2);
 INSERT INTO Colleges(CollegeName,EnrollmentSize,AcceptanceRate,CollegeID) VALUES ('Goldsmiths College, University of London',55146,'98%',3);
@@ -358,14 +331,6 @@ INSERT INTO Colleges(CollegeName,EnrollmentSize,AcceptanceRate,CollegeID) VALUES
 INSERT INTO Colleges(CollegeName,EnrollmentSize,AcceptanceRate,CollegeID) VALUES ('Islamia University of Bahawalpur',121781,'90%',150);
 
 
-DROP TABLE IF EXISTS Departments;
-CREATE TABLE Departments(
-   DeptCode        INTEGER  NOT NULL
-  ,CollegeID       INTEGER  NOT NULL
-  ,DeptRank        INTEGER  NOT NULL
-  ,DeptDescription VARCHAR(667) NOT NULL
-  ,PRIMARY KEY(DeptCode,CollegeID)
-);
 INSERT INTO Departments(DeptCode,CollegeID,DeptRank,DeptDescription) VALUES (1,50,69,'luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue');
 INSERT INTO Departments(DeptCode,CollegeID,DeptRank,DeptDescription) VALUES (2,47,56,'luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut');
 INSERT INTO Departments(DeptCode,CollegeID,DeptRank,DeptDescription) VALUES (3,27,4,'tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo');
@@ -468,15 +433,7 @@ INSERT INTO Departments(DeptCode,CollegeID,DeptRank,DeptDescription) VALUES (99,
 INSERT INTO Departments(DeptCode,CollegeID,DeptRank,DeptDescription) VALUES (100,112,86,'quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in');
 
 
-DROP TABLE IF EXISTS Courses;
-CREATE TABLE Courses(
-   CourseID          INTEGER  NOT NULL
-  ,DeptCode          INTEGER  NOT NULL
-  ,Credits           INTEGER  NOT NULL
-  ,CourseName        VARCHAR(29) NOT NULL
-  ,CourseDescription VARCHAR(668) NOT NULL
-  ,PRIMARY KEY(CourseID,DeptCode)
-);
+
 INSERT INTO Courses(CourseID,DeptCode,Credits,CourseName,CourseDescription) VALUES (1,11,5,'Columba livia','in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum');
 INSERT INTO Courses(CourseID,DeptCode,Credits,CourseName,CourseDescription) VALUES (2,26,8,'Sciurus niger','nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus');
 INSERT INTO Courses(CourseID,DeptCode,Credits,CourseName,CourseDescription) VALUES (3,13,3,'Dicrurus adsimilis','volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus');
@@ -729,16 +686,6 @@ INSERT INTO Courses(CourseID,DeptCode,Credits,CourseName,CourseDescription) VALU
 INSERT INTO Courses(CourseID,DeptCode,Credits,CourseName,CourseDescription) VALUES (250,62,9,'Iguana iguana','justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat et eros vestibulum');
 
 
-DROP TABLE IF EXISTS FinancialPackages;
-CREATE TABLE FinancialPackages(
-   FFCode       INTEGER  NOT NULL
-  ,CollegeID    INTEGER  NOT NULL
-  ,LowerRange   INTEGER  NOT NULL
-  ,UpperRange   INTEGER  NOT NULL
-  ,AmountOfAid  INTEGER  NOT NULL
-  ,NumSemesters INTEGER  NOT NULL
-  ,PRIMARY KEY(FFCode,CollegeID)
-);
 INSERT INTO FinancialPackages(FFCode,CollegeID,LowerRange,UpperRange,AmountOfAid,NumSemesters) VALUES (1,18,906,4321,78459,3);
 INSERT INTO FinancialPackages(FFCode,CollegeID,LowerRange,UpperRange,AmountOfAid,NumSemesters) VALUES (2,107,180,5688,25944,1);
 INSERT INTO FinancialPackages(FFCode,CollegeID,LowerRange,UpperRange,AmountOfAid,NumSemesters) VALUES (3,136,311,5809,87985,3);
@@ -841,15 +788,6 @@ INSERT INTO FinancialPackages(FFCode,CollegeID,LowerRange,UpperRange,AmountOfAid
 INSERT INTO FinancialPackages(FFCode,CollegeID,LowerRange,UpperRange,AmountOfAid,NumSemesters) VALUES (100,60,787,7688,49423,8);
 
 
-DROP TABLE IF EXISTS Scholarships;
-CREATE TABLE Scholarships(
-   SSCode                 INTEGER  NOT NULL
-  ,FFCode                 INTEGER  NOT NULL
-  ,ScholarshipName        VARCHAR(19) NOT NULL
-  ,ScholarshipDescription VARCHAR(669) NOT NULL
-  ,Amount                 INTEGER  NOT NULL
-  ,PRIMARY KEY(SSCode,FFCode)
-);
 INSERT INTO Scholarships(SSCode,FFCode,ScholarshipName,ScholarshipDescription,Amount) VALUES (1,17,'help-desk','consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa donec dapibus duis at velit eu est congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis',81128);
 INSERT INTO Scholarships(SSCode,FFCode,ScholarshipName,ScholarshipDescription,Amount) VALUES (2,13,'bottom-line','neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia',28438);
 INSERT INTO Scholarships(SSCode,FFCode,ScholarshipName,ScholarshipDescription,Amount) VALUES (3,54,'support','eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci',18543);
@@ -952,23 +890,6 @@ INSERT INTO Scholarships(SSCode,FFCode,ScholarshipName,ScholarshipDescription,Am
 INSERT INTO Scholarships(SSCode,FFCode,ScholarshipName,ScholarshipDescription,Amount) VALUES (100,42,'Integrated','sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat',95357);
 
 
-
-DROP TABLE IF EXISTS Students;
-CREATE TABLE Students(
-   StudentID    INTEGER  NOT NULL PRIMARY KEY 
-  ,SchoolID     INTEGER  NOT NULL
-  ,CounselorID  INTEGER  NOT NULL
-  ,FirstName    VARCHAR(14) NOT NULL
-  ,LastName     VARCHAR(16) NOT NULL
-  ,Email        VARCHAR(35) NOT NULL
-  ,CurrentYear  INTEGER  NOT NULL
-  ,DesiredMajor VARCHAR(24) NOT NULL
-  ,DesiredMinor VARCHAR(24)
-  ,SAT          INTEGER  NOT NULL
-  ,ACT          INTEGER  NOT NULL
-  ,GPA          FLOAT NOT NULL
-  ,PhoneNumber  BIGINT  NOT NULL
-);
 INSERT INTO Students(StudentID,SchoolID,CounselorID,FirstName,LastName,Email,CurrentYear,DesiredMajor,DesiredMinor,SAT,ACT,GPA,PhoneNumber) VALUES (1,12,1,'Elbert','Duchateau','educhateau0@usgs.gov',2005,'Product Management',NULL,1133,1340,2.689,6772157581);
 INSERT INTO Students(StudentID,SchoolID,CounselorID,FirstName,LastName,Email,CurrentYear,DesiredMajor,DesiredMinor,SAT,ACT,GPA,PhoneNumber) VALUES (2,92,26,'Micky','Grieve','mgrieve1@usa.gov',2005,'Marketing',NULL,1352,907,1.058,1434185503);
 INSERT INTO Students(StudentID,SchoolID,CounselorID,FirstName,LastName,Email,CurrentYear,DesiredMajor,DesiredMinor,SAT,ACT,GPA,PhoneNumber) VALUES (3,34,24,'Paola','Lothean','plothean2@shareasale.com',2008,'Support','Engineering',508,1493,1.666,9355442921);
@@ -1471,15 +1392,7 @@ INSERT INTO Students(StudentID,SchoolID,CounselorID,FirstName,LastName,Email,Cur
 INSERT INTO Students(StudentID,SchoolID,CounselorID,FirstName,LastName,Email,CurrentYear,DesiredMajor,DesiredMinor,SAT,ACT,GPA,PhoneNumber) VALUES (500,122,1,'Margaretha','Jupe','mjupedv@miibeian.gov.cn',1997,'Sales','Marketing',799,1222,1.009,4278697937);
 
 
-DROP TABLE IF EXISTS Parents;
-CREATE TABLE Parents (
-   ParentName     VARCHAR(24) NOT NULL
-  ,StudentID      INTEGER  NOT NULL
-  ,Income         INTEGER  NOT NULL
-  ,SchoolAttended VARCHAR(13) NOT NULL
-  ,NumChildren    INTEGER  NOT NULL
-  , PRIMARY KEY(ParentName, StudentID)
-);
+
 INSERT INTO Parents(ParentName,StudentID,Income,SchoolAttended,NumChildren) VALUES ('Brenda Nelm',449,785764,'Oyoloo',3);
 INSERT INTO Parents(ParentName,StudentID,Income,SchoolAttended,NumChildren) VALUES ('Barthel Ragbourne',400,935394,'Zoomzone',6);
 INSERT INTO Parents(ParentName,StudentID,Income,SchoolAttended,NumChildren) VALUES ('Norrie L''Episcopio',228,357371,'Skidoo',9);
@@ -1982,12 +1895,6 @@ INSERT INTO Parents(ParentName,StudentID,Income,SchoolAttended,NumChildren) VALU
 INSERT INTO Parents(ParentName,StudentID,Income,SchoolAttended,NumChildren) VALUES ('Marthe Jovic',335,263426,'Avaveo',5);
 
 
-DROP TABLE IF EXISTS StudentsFavoritedColleges;
-CREATE TABLE StudentsFavoritedColleges(
-   studentID INTEGER  NOT NULL
-  ,collegeID INTEGER  NOT NULL
-  ,PRIMARY KEY(studentID,collegeID)
-);
 INSERT INTO StudentsFavoritedColleges(studentID,collegeID) VALUES (294,122);
 INSERT INTO StudentsFavoritedColleges(studentID,collegeID) VALUES (485,70);
 INSERT INTO StudentsFavoritedColleges(studentID,collegeID) VALUES (236,148);
@@ -2493,15 +2400,6 @@ INSERT INTO StudentsFavoritedColleges(studentID,collegeID) VALUES (43,122);
 
 
 
-DROP TABLE IF EXISTS AlumniChats;
-CREATE TABLE AlumniChats(
-   StudentID   INTEGER  NOT NULL
-  ,AlumniID    INTEGER  NOT NULL
-  ,CounselorID INTEGER  NOT NULL
-  ,AlumniName  VARCHAR(21) NOT NULL
-  ,AlumniEmail VARCHAR(31) NOT NULL
-  ,PRIMARY KEY(StudentID,AlumniID)
-);
 INSERT INTO AlumniChats(StudentID,AlumniID,CounselorID,AlumniName,AlumniEmail) VALUES (356,1,22,'Nicola Mattiato','nmattiato0@ca.gov');
 INSERT INTO AlumniChats(StudentID,AlumniID,CounselorID,AlumniName,AlumniEmail) VALUES (117,2,11,'Bank Souster','bsouster1@loc.gov');
 INSERT INTO AlumniChats(StudentID,AlumniID,CounselorID,AlumniName,AlumniEmail) VALUES (285,3,16,'Winny Goodnow','wgoodnow2@uiuc.edu');
@@ -2653,274 +2551,260 @@ INSERT INTO AlumniChats(StudentID,AlumniID,CounselorID,AlumniName,AlumniEmail) V
 INSERT INTO AlumniChats(StudentID,AlumniID,CounselorID,AlumniName,AlumniEmail) VALUES (243,149,46,'Filia Dinzey','fdinzey44@ehow.com');
 INSERT INTO AlumniChats(StudentID,AlumniID,CounselorID,AlumniName,AlumniEmail) VALUES (35,150,9,'Isabella Gregolin','igregolin45@bravesites.com');
 
-DROP TABLE IF EXISTS AlumChatContent;
-CREATE TABLE AlumChatContent(
-   Content   VARCHAR(348) NOT NULL
-  ,StudentID INTEGER  NOT NULL
-  ,AlumniID  INTEGER  NOT NULL
-  ,PRIMARY KEY(Content,StudentID,AlumniID)
-);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus',281,64);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at',463,41);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus',293,5);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur',288,19);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede',65,115);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in',16,7);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse',34,71);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget',40,126);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et',145,77);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque',21,127);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros',32,135);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue',425,45);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel',24,106);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac',61,65);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer',27,62);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('dolor morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis',66,115);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue',373,125);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse',15,18);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('mollis molestie lorem quisque ut',468,37);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('augue a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique tortor eu',375,130);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('orci pede venenatis',38,94);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl',131,138);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('dolor vel est donec odio justo sollicitudin',171,93);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla',256,84);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat',443,72);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat',27,102);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('in porttitor pede justo eu massa donec dapibus duis',288,45);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit',240,114);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit',303,116);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis',258,35);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse',134,106);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac',313,73);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam',425,32);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ultrices posuere cubilia curae donec pharetra magna vestibulum',3,53);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('cras in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id',147,98);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing',248,8);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus',267,72);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ut dolor morbi vel lectus in quam',454,15);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc',319,28);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id',306,26);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris eget massa tempor convallis',258,83);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nec molestie sed justo pellentesque viverra pede ac diam',392,107);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in',159,47);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla',443,102);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam',56,100);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam',76,147);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat',275,113);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum',79,54);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui',106,119);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum',81,13);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum',221,103);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris',333,18);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam',119,73);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('donec dapibus duis at velit eu est congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis',102,138);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('faucibus orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec ut dolor morbi vel lectus in quam fringilla rhoncus mauris',179,19);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus',60,93);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit',344,45);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('dapibus augue vel accumsan',87,118);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id',261,125);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien',136,26);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('erat quisque erat eros viverra eget congue',197,147);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla',287,70);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula',46,66);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum',455,26);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget',164,58);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce',307,98);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum',340,81);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in',200,56);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec',293,121);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum',154,47);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non',479,71);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('in blandit ultrices enim lorem ipsum dolor sit amet consectetuer',413,65);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel',457,52);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem',469,19);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris',242,14);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate',231,13);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('dui vel sem sed sagittis nam congue risus semper porta',393,39);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem',143,113);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere',372,1);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non',333,23);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec ut dolor morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus',326,21);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci',69,55);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo',213,145);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa donec dapibus duis',54,93);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec',136,22);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('justo aliquam quis turpis eget',122,83);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec',104,35);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec ut dolor morbi',148,136);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque',27,14);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('aliquet at feugiat non pretium quis',415,6);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar',422,150);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse',183,109);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio',419,58);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl',114,61);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('molestie lorem',121,64);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet',396,11);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede',142,142);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('primis in faucibus orci luctus et',257,113);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper',338,70);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque',50,7);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae',3,26);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('non interdum in',8,83);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum',171,40);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis',136,36);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sit amet justo morbi ut odio cras mi pede malesuada in imperdiet',372,63);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec',19,130);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis',127,95);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa donec dapibus',202,138);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vel augue vestibulum rutrum',87,64);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum',133,106);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('rhoncus mauris enim leo rhoncus sed vestibulum sit',478,66);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing',312,21);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut',334,96);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa donec dapibus duis at velit eu est congue elementum in hac habitasse platea',45,128);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare',52,45);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae',144,34);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat',205,28);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst',186,5);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper',429,35);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis',451,131);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('enim blandit mi in',184,106);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non',194,69);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse',403,56);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare',252,76);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient',19,87);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam',131,108);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('integer non velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet',405,126);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit',161,94);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla',41,140);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('blandit non interdum in ante vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae duis faucibus accumsan',109,86);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('donec semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec',316,75);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh',307,120);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec',68,24);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ipsum dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante',493,63);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue',432,80);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum',170,33);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia',354,4);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis',220,110);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo',308,9);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis',130,146);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac',420,86);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam',109,124);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in',405,117);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla',105,54);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('proin eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget',331,139);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sapien quis',93,69);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vulputate justo in blandit',89,125);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum',36,121);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('massa id nisl venenatis lacinia aenean sit amet justo morbi ut',366,115);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero',216,39);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at',235,23);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio',11,68);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien',259,67);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut',346,5);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl',210,24);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet',389,48);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede',297,88);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet',197,98);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('consequat varius integer ac leo pellentesque ultrices mattis odio donec',118,106);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget',399,33);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor',346,55);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam',295,104);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat',177,145);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales',224,30);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui',283,23);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed',302,54);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer',80,103);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat et',225,118);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('non velit donec diam neque vestibulum eget vulputate',341,50);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum',390,120);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam',413,137);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo',73,35);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in',324,98);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis',414,142);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere',458,4);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum',418,49);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at',319,45);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus',90,100);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia',343,85);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis',206,104);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('amet sapien dignissim vestibulum vestibulum ante ipsum',110,74);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam',431,146);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ornare imperdiet sapien urna pretium nisl',2,8);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat',107,112);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec',407,45);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eleifend quam a odio in hac habitasse',14,66);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('a pede posuere nonummy',69,119);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et',260,145);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed',200,21);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut',459,87);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('luctus et ultrices posuere cubilia curae nulla dapibus dolor vel',150,95);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede',346,12);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae',326,60);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('in porttitor pede justo eu massa donec dapibus duis at velit eu est congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit',62,107);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in',31,138);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse',294,86);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend',44,79);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea',455,56);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque',392,144);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eget massa tempor convallis nulla neque libero convallis',247,39);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed',63,110);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('a libero nam dui proin leo odio porttitor id',156,124);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien',488,128);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget',279,8);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh',14,148);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pede venenatis non sodales sed tincidunt eu felis',257,100);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt',390,11);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus',354,40);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tristique tortor',95,97);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in',459,92);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere',151,80);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('duis at velit eu est congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo',20,110);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('quis libero nullam sit',50,29);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet',262,123);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas',441,28);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eu felis fusce posuere felis sed lacus',479,39);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt',163,17);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis',111,139);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus',300,123);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque duis bibendum',185,119);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta',350,104);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam',251,41);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('donec semper sapien a libero nam dui proin',13,133);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a',392,57);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('congue elementum in hac habitasse platea dictumst morbi vestibulum velit',16,58);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula',165,100);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('rutrum at lorem integer tincidunt ante vel ipsum',447,132);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('mi in porttitor pede',23,22);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo',68,35);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique',91,120);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce',154,37);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ac consequat metus sapien ut',50,122);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl',402,36);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus',115,141);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('volutpat eleifend donec ut dolor morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan',331,32);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id',149,111);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('lectus in quam fringilla rhoncus mauris enim',499,20);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam',219,113);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar',85,104);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis',387,109);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas',376,7);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec',47,88);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis',168,56);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque',58,149);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('penatibus et magnis dis parturient montes nascetur ridiculus mus',295,34);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor',375,25);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in',274,137);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nulla sed accumsan felis',186,28);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non',147,119);
-INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante',315,13);
+
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus',281,64);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at',463,41);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus',293,5);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur',288,19);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede',65,115);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in',16,7);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse',34,71);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget',40,126);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et',145,77);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque',21,127);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros',32,135);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue',425,45);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel',24,106);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac',61,65);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer',27,62);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('dolor morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis',66,115);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue',373,125);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse',15,18);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('mollis molestie lorem quisque ut',468,37);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('augue a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique tortor eu',375,130);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('orci pede venenatis',38,94);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl',131,138);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('dolor vel est donec odio justo sollicitudin',171,93);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla',256,84);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat',443,72);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat',27,102);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('in porttitor pede justo eu massa donec dapibus duis',288,45);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit',240,114);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit',303,116);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis',258,35);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse',134,106);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac',313,73);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam',425,32);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ultrices posuere cubilia curae donec pharetra magna vestibulum',3,53);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('cras in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id',147,98);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing',248,8);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus',267,72);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ut dolor morbi vel lectus in quam',454,15);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc',319,28);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id',306,26);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris eget massa tempor convallis',258,83);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nec molestie sed justo pellentesque viverra pede ac diam',392,107);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in',159,47);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla',443,102);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam',56,100);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam',76,147);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat',275,113);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum',79,54);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui',106,119);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum',81,13);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum',221,103);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris',333,18);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam',119,73);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('donec dapibus duis at velit eu est congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis',102,138);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('faucibus orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec ut dolor morbi vel lectus in quam fringilla rhoncus mauris',179,19);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus',60,93);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit',344,45);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('dapibus augue vel accumsan',87,118);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id',261,125);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien',136,26);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('erat quisque erat eros viverra eget congue',197,147);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla',287,70);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula',46,66);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum',455,26);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget',164,58);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce',307,98);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum',340,81);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in',200,56);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec',293,121);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum',154,47);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non',479,71);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('in blandit ultrices enim lorem ipsum dolor sit amet consectetuer',413,65);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel',457,52);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem',469,19);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris',242,14);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate',231,13);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('dui vel sem sed sagittis nam congue risus semper porta',393,39);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem',143,113);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere',372,1);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non',333,23);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec ut dolor morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus',326,21);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci',69,55);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo',213,145);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa donec dapibus duis',54,93);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec',136,22);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('justo aliquam quis turpis eget',122,83);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec',104,35);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec ut dolor morbi',148,136);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque',27,14);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('aliquet at feugiat non pretium quis',415,6);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar',422,150);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse',183,109);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio',419,58);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl',114,61);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('molestie lorem',121,64);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet',396,11);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede',142,142);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('primis in faucibus orci luctus et',257,113);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper',338,70);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque',50,7);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae',3,26);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('non interdum in',8,83);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum',171,40);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis',136,36);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sit amet justo morbi ut odio cras mi pede malesuada in imperdiet',372,63);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec',19,130);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis',127,95);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa donec dapibus',202,138);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vel augue vestibulum rutrum',87,64);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum',133,106);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('rhoncus mauris enim leo rhoncus sed vestibulum sit',478,66);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing',312,21);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut',334,96);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa donec dapibus duis at velit eu est congue elementum in hac habitasse platea',45,128);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare',52,45);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae',144,34);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat',205,28);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst',186,5);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper',429,35);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis',451,131);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('enim blandit mi in',184,106);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non',194,69);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse',403,56);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare',252,76);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient',19,87);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam',131,108);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('integer non velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet',405,126);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit',161,94);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla',41,140);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('blandit non interdum in ante vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae duis faucibus accumsan',109,86);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('donec semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec',316,75);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh',307,120);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec',68,24);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ipsum dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante',493,63);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue',432,80);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum',170,33);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia',354,4);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis',220,110);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo',308,9);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis',130,146);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac',420,86);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam',109,124);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in',405,117);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla',105,54);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('proin eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget',331,139);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('sapien quis',93,69);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vulputate justo in blandit',89,125);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum',36,121);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('massa id nisl venenatis lacinia aenean sit amet justo morbi ut',366,115);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero',216,39);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at',235,23);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio',11,68);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien',259,67);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut',346,5);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl',210,24);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet',389,48);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede',297,88);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet',197,98);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('consequat varius integer ac leo pellentesque ultrices mattis odio donec',118,106);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget',399,33);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor',346,55);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam',295,104);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat',177,145);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales',224,30);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui',283,23);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed',302,54);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer',80,103);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat et',225,118);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('non velit donec diam neque vestibulum eget vulputate',341,50);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum',390,120);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam',413,137);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo',73,35);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in',324,98);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis',414,142);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere',458,4);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum',418,49);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at',319,45);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus',90,100);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia',343,85);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis',206,104);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('amet sapien dignissim vestibulum vestibulum ante ipsum',110,74);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam',431,146);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ornare imperdiet sapien urna pretium nisl',2,8);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat',107,112);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec',407,45);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eleifend quam a odio in hac habitasse',14,66);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('a pede posuere nonummy',69,119);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et',260,145);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed',200,21);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut',459,87);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('luctus et ultrices posuere cubilia curae nulla dapibus dolor vel',150,95);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede',346,12);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae',326,60);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('in porttitor pede justo eu massa donec dapibus duis at velit eu est congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit',62,107);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in',31,138);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse',294,86);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend',44,79);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea',455,56);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque',392,144);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eget massa tempor convallis nulla neque libero convallis',247,39);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed',63,110);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('a libero nam dui proin leo odio porttitor id',156,124);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien',488,128);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget',279,8);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh',14,148);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pede venenatis non sodales sed tincidunt eu felis',257,100);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt',390,11);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus',354,40);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tristique tortor',95,97);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in',459,92);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere',151,80);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('duis at velit eu est congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo',20,110);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('quis libero nullam sit',50,29);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet',262,123);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas',441,28);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eu felis fusce posuere felis sed lacus',479,39);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt',163,17);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis',111,139);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus',300,123);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque duis bibendum',185,119);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta',350,104);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam',251,41);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('donec semper sapien a libero nam dui proin',13,133);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a',392,57);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('congue elementum in hac habitasse platea dictumst morbi vestibulum velit',16,58);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula',165,100);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('rutrum at lorem integer tincidunt ante vel ipsum',447,132);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('mi in porttitor pede',23,22);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo',68,35);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique',91,120);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce',154,37);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('ac consequat metus sapien ut',50,122);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl',402,36);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus',115,141);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('volutpat eleifend donec ut dolor morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan',331,32);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id',149,111);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('lectus in quam fringilla rhoncus mauris enim',499,20);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam',219,113);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar',85,104);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis',387,109);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas',376,7);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec',47,88);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis',168,56);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque',58,149);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('penatibus et magnis dis parturient montes nascetur ridiculus mus',295,34);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor',375,25);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus suspendisse potenti in',274,137);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('nulla sed accumsan felis',186,28);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non',147,119);
+-- INSERT INTO AlumChatContent(Content,StudentID,AlumniID) VALUES ('in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante',315,13);
 
 
-DROP TABLE IF EXISTS CollegePreferences;
-CREATE TABLE CollegePreferences(
-   CPID        INTEGER  NOT NULL
-  ,StudentID   INTEGER  NOT NULL
-  ,GreekLife   VARCHAR(5) NOT NULL
-  ,Size        VARCHAR(6) NOT NULL
-  ,Temperature VARCHAR(4) NOT NULL
-  ,PRIMARY KEY(CPID,StudentID)
-);
+
 INSERT INTO CollegePreferences(CPID,StudentID,GreekLife,Size,Temperature) VALUES (1,1,'false','Medium','Cold');
 INSERT INTO CollegePreferences(CPID,StudentID,GreekLife,Size,Temperature) VALUES (2,2,'false','Medium','Mild');
 INSERT INTO CollegePreferences(CPID,StudentID,GreekLife,Size,Temperature) VALUES (3,3,'true','Large','Hot');
@@ -3422,12 +3306,6 @@ INSERT INTO CollegePreferences(CPID,StudentID,GreekLife,Size,Temperature) VALUES
 INSERT INTO CollegePreferences(CPID,StudentID,GreekLife,Size,Temperature) VALUES (499,499,'false','Small','Hot');
 INSERT INTO CollegePreferences(CPID,StudentID,GreekLife,Size,Temperature) VALUES (500,500,'false','Large','Hot');
 
-DROP TABLE IF EXISTS CollegePrefLocation;
-CREATE TABLE CollegePrefLocation(
-   Location VARCHAR(50) NOT NULL
-  ,CPID     INTEGER  NOT NULL
-  ,PRIMARY KEY(Location,CPID)
-);
 INSERT INTO CollegePrefLocation(Location,CPID) VALUES ('Parabcan',387);
 INSERT INTO CollegePrefLocation(Location,CPID) VALUES ('Catujal',445);
 INSERT INTO CollegePrefLocation(Location,CPID) VALUES ('Coromoro',426);
@@ -4180,12 +4058,6 @@ INSERT INTO CollegePrefLocation(Location,CPID) VALUES ('Banjar Buahan',380);
 INSERT INTO CollegePrefLocation(Location,CPID) VALUES ('Ban Nong Wua So',465);
 
 
-DROP TABLE IF EXISTS AdmissionsPlan;
-CREATE TABLE AdmissionsPlan(
-   AdmissionsID INTEGER  NOT NULL
-  ,CounselorID  INTEGER  NOT NULL
-  ,PRIMARY KEY(AdmissionsID,CounselorID)
-);
 INSERT INTO AdmissionsPlan(AdmissionsID,CounselorID) VALUES (1,34);
 INSERT INTO AdmissionsPlan(AdmissionsID,CounselorID) VALUES (2,4);
 INSERT INTO AdmissionsPlan(AdmissionsID,CounselorID) VALUES (3,7);
@@ -4488,13 +4360,6 @@ INSERT INTO AdmissionsPlan(AdmissionsID,CounselorID) VALUES (299,16);
 INSERT INTO AdmissionsPlan(AdmissionsID,CounselorID) VALUES (300,19);
 
 
-DROP TABLE IF EXISTS AdmissionsPlanColleges;
-CREATE TABLE AdmissionsPlanColleges(
-   CollegeID    INTEGER  NOT NULL
-  ,Category     VARCHAR(6) NOT NULL
-  ,AdmissionsID INTEGER  NOT NULL
-  ,PRIMARY KEY(CollegeID,AdmissionsID)
-);
 INSERT INTO AdmissionsPlanColleges(CollegeID,Category,AdmissionsID) VALUES (129,'Safety',261);
 INSERT INTO AdmissionsPlanColleges(CollegeID,Category,AdmissionsID) VALUES (27,'Target',86);
 INSERT INTO AdmissionsPlanColleges(CollegeID,Category,AdmissionsID) VALUES (140,'Target',3);

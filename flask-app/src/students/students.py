@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
@@ -36,7 +36,7 @@ def get_student_favorite_colleges(ID):
     the_response.mimetype = 'application/json'
     return the_response
 
-# Get the student's college preferences
+# Get the corresponding student's college preferences
 @students.route('/<ID>/collegePreferences', methods=['GET'])
 def get_student_college_preferences(ID):
     cursor = db.get_db().cursor()
@@ -66,4 +66,23 @@ def get_student_parent_income(ID):
     the_response.mimetype = 'application/json'
     return the_response
 
-@students.route('')
+# Update the students college preferences
+@students.route('/<ID>/updatePreferences', methods=['PUT'])
+def update_student_preferences(ID):
+    the_data = request.json
+
+    # these are the things of what you called them in appsmith
+    greek_life = the_data['greek_life']
+    size = the_data['size']
+    temp = the_data['temp']
+
+    the_query = 'UPDATE CollegePreferences SET GreekLife = %s, Size = %s, Temperature = %s WHERE StudentID = %s;'
+
+    current_app.logger.info(the_query)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(the_query, (greek_life, size, temp, ID))
+    db.get_db().commit()
+
+    return "Successfully updated student preferences!"
+

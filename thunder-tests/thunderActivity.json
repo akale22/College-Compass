@@ -1,16 +1,1 @@
-[
-  {
-    "_id": "32f4008f-b781-4ef0-b940-066cc1e1cebf",
-    "colId": "history",
-    "containerId": "",
-    "name": "localhost:8001/students/1/collegePreferences",
-    "url": "localhost:8001/students/1/collegePreferences",
-    "method": "GET",
-    "sortNum": 0,
-    "created": "2023-04-16T20:59:38.166Z",
-    "modified": "2023-04-16T20:59:38.166Z",
-    "headers": [],
-    "params": [],
-    "tests": []
-  }
-]
+[]

@@ -110,5 +110,43 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "7b844b64-c281-4ba5-a947-d85c86c29d3e",
+    "colId": "683d5679-5c29-4788-8f7d-ddbc5f41859b",
+    "containerId": "",
+    "name": "PUT Student1 CollegePreferences",
+    "url": "localhost:8001/students/1/updatePreferences",
+    "method": "PUT",
+    "sortNum": 100000,
+    "created": "2023-04-16T21:35:48.712Z",
+    "modified": "2023-04-16T21:38:45.196Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"greek_life\": \"false\",\n  \"size\": \"Big\",\n  \"temp\": \"Cold\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "65fa32ed-61a5-4eb6-a6b3-e23741acdf53",
+    "colId": "683d5679-5c29-4788-8f7d-ddbc5f41859b",
+    "containerId": "",
+    "name": "PUT Student150 CollegePreferences",
+    "url": "localhost:8001/students/150/updatePreferences",
+    "method": "PUT",
+    "sortNum": 120000,
+    "created": "2023-04-16T21:45:44.878Z",
+    "modified": "2023-04-16T21:46:46.241Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"greek_life\": \"true\",\n  \"size\": \"Big\",\n  \"temp\": \"Warm\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

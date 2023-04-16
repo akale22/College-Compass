@@ -35,7 +35,37 @@ def get_student_favorite_colleges(ID):
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
-    
+
+# Get the student's college preferences
+@students.route('/<ID>/collegePreferences', methods=['GET'])
+def get_student_college_preferences(ID):
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT * FROM CollegePreferences WHERE StudentID = {0}'.format(ID))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+# Get the corresponding student's parents' financial income
+@students.route('/<ID>/studentParentIncome', methods=['GET'])
+def get_student_parent_income(ID):
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT Income FROM Parents WHERE StudentID = {0}'.format(ID))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
 
 # # Get all customers from the DB
 # @customers.route('/customers', methods=['GET'])

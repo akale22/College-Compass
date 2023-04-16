@@ -156,18 +156,17 @@ CREATE TABLE AlumniChats
         ON DELETE CASCADE
 );
 
--- DROP TABLE IF EXISTS AlumChatContent;
--- CREATE TABLE AlumChatContent
--- (
---     Content VARCHAR(400) NOT NULL,
---     StudentID INT NOT NULL,
---     AlumniID INT NOT NULL,
---     CONSTRAINT alumChatContentPK PRIMARY KEY (Content, StudentID, AlumniID),
---     CONSTRAINT alumChatContentFK FOREIGN KEY (StudentID, AlumniID) REFERENCES AlumniChats(StudentID, AlumniID)
---         ON UPDATE CASCADE
---         ON DELETE CASCADE
--- );
-
+DROP TABLE IF EXISTS AlumChatContent;
+CREATE TABLE AlumChatContent
+(
+    Content VARCHAR(400) NOT NULL,
+    StudentID INT NOT NULL,
+    AlumniID INT NOT NULL,
+    CONSTRAINT alumChatContentPK PRIMARY KEY (Content, StudentID, AlumniID),
+    CONSTRAINT alumChatContentFK FOREIGN KEY (StudentID, AlumniID) REFERENCES AlumniChats(StudentID, AlumniID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
 
 DROP TABLE IF EXISTS CollegePreferences;
 CREATE TABLE CollegePreferences

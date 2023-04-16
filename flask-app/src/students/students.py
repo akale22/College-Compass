@@ -5,6 +5,7 @@ from src import db
 
 students = Blueprint('students', __name__)
 
+
 # Get all of the information for a student
 @students.route('/<ID>', methods=['GET'])
 def get_customer(ID):

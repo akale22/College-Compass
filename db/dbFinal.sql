@@ -682,7 +682,7 @@ CREATE TABLE Scholarships
 
 INSERT INTO Scholarships (SSCode, FFCode, ScholarshipName, ScholarshipDescription, Amount)
 VALUES (1, 1, 'Deans', 'For students with excellent academic performance', 25000),
-       (2, 2, 'Need-based', 'For students whose families don\'t make enough money', 100000);
+       (2, 2, 'Need-based', 'For students whose families dont make enough money', 100000);
 
 -- Creating the StudentColleges Table
 DROP TABLE IF EXISTS StudentColleges;
@@ -706,6 +706,7 @@ CREATE TABLE StudentColleges
 
 INSERT INTO StudentColleges (CollegeID, StudentID, SAT, ACT, Accepted, Rejected, Waitlisted)
 VALUES (53-496-2253, 05-389-8959, NULL, NULL, 'No', 'No', 'No'),
+       (44-412-8497, 05-389-8959, NULL, NULL, 'No', 'No', 'No'),
        (44-412-8497, 85-158-4705, 100, NULL, 'No', 'Yes', 'No'),
        (28-594-3561, 77-637-3900, 1500, 34, 'Yes', 'No', 'No'),
        (07-812-5172, 21-615-8442, NULL, 36, 'No', 'No', 'No');

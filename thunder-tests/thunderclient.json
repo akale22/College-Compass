@@ -356,5 +356,123 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "3be8a8d5-b27e-4287-b07b-3a13d133c93b",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "GET COLLEGES 2",
+    "url": "localhost:8001/colleges/2",
+    "method": "GET",
+    "sortNum": 90000,
+    "created": "2023-04-17T18:01:14.727Z",
+    "modified": "2023-04-17T18:01:36.147Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "47b2cb36-da10-49ae-9f9b-58dd3621c896",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "GET College 3",
+    "url": "localhost:8001/colleges/3",
+    "method": "GET",
+    "sortNum": 100000,
+    "created": "2023-04-17T18:07:08.080Z",
+    "modified": "2023-04-17T18:07:16.278Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "c96a4b69-c04f-43eb-af51-d946ab035e7c",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "GET College 3 Departments",
+    "url": "localhost:8001/colleges/3/departments",
+    "method": "GET",
+    "sortNum": 110000,
+    "created": "2023-04-17T18:08:55.673Z",
+    "modified": "2023-04-17T18:09:29.469Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "4704e816-1505-4b5a-847c-9e3258b689d8",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "GET College 4 Departments",
+    "url": "localhost:8001/colleges/4/departments",
+    "method": "GET",
+    "sortNum": 120000,
+    "created": "2023-04-17T18:09:49.100Z",
+    "modified": "2023-04-17T18:09:59.235Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "71a0ad1d-cb4e-4ef2-9fcd-7033f944c1ef",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "GET College 5 Courses",
+    "url": "localhost:8001/colleges/5/courses",
+    "method": "GET",
+    "sortNum": 130000,
+    "created": "2023-04-17T18:10:16.084Z",
+    "modified": "2023-04-17T18:11:41.410Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "43cad6bc-76eb-4e9c-901a-993bd1fc5982",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "GET College 6 Courses",
+    "url": "localhost:8001/colleges/6/courses",
+    "method": "GET",
+    "sortNum": 140000,
+    "created": "2023-04-17T18:12:07.029Z",
+    "modified": "2023-04-17T18:12:17.748Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "32f1c7e4-613a-40a8-9334-ad1526d369fc",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "GET ALL Colleges",
+    "url": "localhost:8001/colleges",
+    "method": "GET",
+    "sortNum": 150000,
+    "created": "2023-04-17T18:12:28.854Z",
+    "modified": "2023-04-17T18:12:41.173Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "5ff62f4e-2926-4179-98f0-d939fe917a3f",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "GET All Colleges Query Param",
+    "url": "localhost:8001/colleges?enrollmentSize=8000",
+    "method": "GET",
+    "sortNum": 160000,
+    "created": "2023-04-17T18:13:03.407Z",
+    "modified": "2023-04-17T18:13:21.598Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "enrollmentSize",
+        "value": "8000",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]

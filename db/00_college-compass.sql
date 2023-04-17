@@ -36,7 +36,7 @@ CREATE TABLE Colleges
 DROP TABLE IF EXISTS Departments;
 CREATE TABLE Departments
 (
-    DeptName VARCHAR(10) NOT NULL,
+    DeptName VARCHAR(20) NOT NULL,
     DeptCode INT NOT NULL,
     CollegeID INT NOT NULL,
     DeptRank INT NOT NULL,

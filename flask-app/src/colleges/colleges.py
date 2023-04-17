@@ -206,6 +206,24 @@ def delete_department(ID):
 
     return "Successfully deleted a department!"
 
+# Update the college's info
+@colleges.route('/<ID>/updateInfo', methods=['PUT'])
+def update_college_info(ID):
+    the_data = request.json
+
+    college_name = the_data['CollegeName']
+    enrollment_size = the_data['EnrollmentSize']
+    acceptance_rate = the_data['AcceptanceRate']
+
+    the_query = 'UPDATE Colleges SET CollegeName = %s, EnrollmentSize = %s, AcceptanceRate = %s WHERE CollegeID = %s;'
+
+    current_app.logger.info(the_query)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(the_query, (college_name, enrollment_size, acceptance_rate, ID))
+    db.get_db().commit()
+
+    return "Successfully updated college info!"
 
 # # Delete a course
 # @colleges.route('/<ID>/courses', methods=['DELETE'])

@@ -118,9 +118,9 @@
     "name": "PUT Student1 CollegePreferences",
     "url": "localhost:8001/students/1/updatePreferences",
     "method": "PUT",
-    "sortNum": 100000,
+    "sortNum": 95000,
     "created": "2023-04-16T21:35:48.712Z",
-    "modified": "2023-04-16T21:38:45.196Z",
+    "modified": "2023-04-17T19:53:51.136Z",
     "headers": [],
     "params": [],
     "body": {
@@ -361,7 +361,7 @@
     "_id": "3be8a8d5-b27e-4287-b07b-3a13d133c93b",
     "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
     "containerId": "",
-    "name": "GET COLLEGES 2",
+    "name": "GET College 2",
     "url": "localhost:8001/colleges/2",
     "method": "GET",
     "sortNum": 90000,
@@ -509,6 +509,44 @@
     "body": {
       "type": "json",
       "raw": "{\n  \"DeptCode\": 299\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "f9316ed6-4480-4f99-b0a9-5befef326406",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "PUT College1 Info",
+    "url": "localhost:8001/colleges/1/updateInfo",
+    "method": "PUT",
+    "sortNum": 190000,
+    "created": "2023-04-17T19:31:21.350Z",
+    "modified": "2023-04-17T20:01:47.761Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"CollegeName\": \"Northeastern University\",\n  \"EnrollmentSize\": 12345,\n  \"AcceptanceRate\": \"7%\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "f335c5a1-7081-4572-8821-fcdd492e6067",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "PUT College35 Info",
+    "url": "localhost:8001/colleges/35/updateInfo",
+    "method": "PUT",
+    "sortNum": 200000,
+    "created": "2023-04-17T20:02:30.995Z",
+    "modified": "2023-04-17T20:03:36.623Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"CollegeName\": \"Wentworth Institute of Tech\",\n  \"EnrollmentSize\": 235342,\n  \"AcceptanceRate\": \"45%\"\n}",
       "form": []
     },
     "tests": []

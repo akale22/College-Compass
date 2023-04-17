@@ -152,4 +152,21 @@ def add_new_department(ID):
     cursor.execute(the_query, (deptName, deptRank, deptDescription, deptCode, collegeID))
     db.get_db().commit()
 
+
 # Add a new college to the college list if it is not already there
+@colleges.route('/<ID>/favoritedColleges', methods=['POST'])
+def add_favorite_colleges(ID):
+    the_data = request.json
+    college_name = the_data['CollegeName']
+    
+    college_id = the_data['CollegeID']
+
+    the_query = 'INSERT into StudentsFavoritedColleges (StudentID, CollegeID) VALUES (%s, %s);'
+
+    current_app.logger.info(the_query)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(the_query, (ID, college_id))
+    db.get_db().commit()
+
+    return "Successfully added a college to a student's favorited list!"

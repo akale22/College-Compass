@@ -4,7 +4,7 @@ from src import db
 
 colleges = Blueprint('colleges', __name__)
 
-# getting college information
+# Get the specified college's information
 @colleges.route('/<ID>', methods=['GET'])
 def get_college_info(ID):
     cursor = db.get_db().cursor()
@@ -20,7 +20,7 @@ def get_college_info(ID):
     the_response.mimetype = 'application/json'
     return the_response
 
-# Get department information
+# Get department information for the specified college
 @colleges.route('/<ID>/departments', methods=['GET'])
 def get_college_departments(ID):
     cursor = db.get_db().cursor()
@@ -36,12 +36,12 @@ def get_college_departments(ID):
     the_response.mimetype = 'application/json'
     return the_response
 
-# Get course information
+# Get course information for the specified college
 @colleges.route('/<ID>/courses', methods=['GET'])
 def get_college_courses(ID):
     cursor = db.get_db().cursor() 
     # get college departments, have to join on colleges
-    cursor.execute('SELECT CourseName, CourseDescription, Credits FROM Colleges JOIN Departments D JOIN Courses on D.DeptCode = Courses.DeptCode WHERE Colleges.CollegeID = {0}'.format(ID))
+    cursor.execute('SELECT DeptName, CourseName, CourseDescription, Credits FROM Colleges JOIN Departments D JOIN Courses on D.DeptCode = Courses.DeptCode WHERE Colleges.CollegeID = {0}'.format(ID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -53,16 +53,13 @@ def get_college_courses(ID):
     the_response.mimetype = 'application/json'
     return the_response
 
-# Get all colleges with query params:
+# Get all colleges with the specified query params (filtering based on enrollment)
 @colleges.route('/', methods=['GET'])
 def get_all_colleges():
     cursor = db.get_db().cursor()
-    # been messing around with this and the only real thing you can filter by in a college is the enrollmentSize, so you might
-    # as well just pass it through the url instead of query paramters tho idk
 
-    # default value if the user does not supply a paramter
+    # default value if the user does not supply a parameter
     enrollmentSize = request.args.get('enrollmentSize', 10000000)
-    # enrollmentSize = request.args.to_dict()['enrollmentSize']
     the_query ='SELECT * FROM Colleges WHERE EnrollmentSize < ' + str(enrollmentSize)
 
     cursor.execute(the_query)
@@ -79,19 +76,19 @@ def get_all_colleges():
     the_response.mimetype = 'application/json'
     return the_response
 
-#another route to get how many students are viewing a college:
-
 # Add a new course to a college
 @colleges.route('/<ID>/newCourse', methods=['POST'])
 def add_new_course(ID):
     the_data = request.json
-    dept_id = the_data['DeptCode']
+    dept_code = the_data['DeptCode']
     credits = the_data['Credits']
     courseName = the_data['CourseName']
     courseDescription = the_data['CourseDescription']
-    tempCourseID = 'SELECT MAX(CourseID) FROM Courses'
+    tempCourseID = 'SELECT MAX(CourseID) FROM Courses WHERE CollegeID = %s AND DeptCode = %s'
     cursor = db.get_db().cursor()
-    cursor.execute(tempCourseID)
+    cursor.execute(tempCourseID, (ID, dept_code))
+
+    
 
     row_headers = [x[0] for x in cursor.description]
     json_data = []
@@ -100,19 +97,22 @@ def add_new_course(ID):
         json_data.append(dict(zip(row_headers, row)))
 
     courseID = json_data[0]["MAX(CourseID)"]
+
+    
     if courseID is None:
         courseID = 1
     else:
         courseID = int(courseID) + 1
 
-    the_query = 'INSERT into Courses (CourseID, DeptCode, Credits, CourseName, CourseDescription) VALUES (%s, %s, %s, %s, %s);'
+    the_query = 'INSERT into Courses (CourseID, DeptCode, CollegeID, Credits, CourseName, CourseDescription) VALUES (%s, %s, %s, %s, %s, %s);'
     current_app.logger.info(the_query)
     cursor = db.get_db().cursor()
-    cursor.execute(the_query, (courseID, dept_id, credits, courseName, courseDescription))
+    cursor.execute(the_query, (courseID, dept_code, ID, credits, courseName, courseDescription))
     db.get_db().commit()
 
     return "Successfully added a course to a college!"
 
+# Get all of the students interested in a specific college
 @colleges.route('/<ID>/studentsInterested', methods=['GET'])
 def get_interested_students(ID):
     cursor = db.get_db().cursor()
@@ -192,7 +192,7 @@ def add_new_college():
 
     return "Successfully added a new college!"
 
-# Delete a department
+# Delete a department from a college
 @colleges.route('/<ID>/departments', methods=['DELETE'])
 def delete_department(ID):
     the_data = request.json
@@ -206,7 +206,7 @@ def delete_department(ID):
 
     return "Successfully deleted a department!"
 
-# Update the college's info
+# Update the college's info for the specified college
 @colleges.route('/<ID>/updateInfo', methods=['PUT'])
 def update_college_info(ID):
     the_data = request.json
@@ -225,17 +225,17 @@ def update_college_info(ID):
 
     return "Successfully updated college info!"
 
-# Delete a course -- doesn't delete based on CollegeID
+# Delete a course for the specific college
 @colleges.route('/<ID>/courses', methods=['DELETE'])
 def delete_course(ID):
     the_data = request.json
     dept_code = the_data['DeptCode']
     course_id = the_data['CourseID']
-    the_query = 'DELETE FROM Courses WHERE DeptCode = %s and CourseID = %s;'
+    the_query = 'DELETE FROM Courses WHERE CollegeID = %s AND DeptCode = %s AND CourseID = %s;'
 
     current_app.logger.info(the_query)
     cursor = db.get_db().cursor()
-    cursor.execute(the_query, (dept_code, course_id))
+    cursor.execute(the_query, (ID, dept_code, course_id))
     db.get_db().commit()
 
     return "Successfully deleted a course!"

@@ -4,7 +4,7 @@ from src import db
 
 students = Blueprint('students', __name__)
 
-# Get all of the information for a student
+# Get the corresponding student's information
 @students.route('/<ID>', methods=['GET'])
 def get_student_info(ID):
     cursor = db.get_db().cursor()
@@ -20,7 +20,7 @@ def get_student_info(ID):
     return the_response
 
 # Get the corresponding student's parents' financial income
-@students.route('/<ID>/studentParentIncome', methods=['GET'])
+@students.route('/<ID>/parentIncome', methods=['GET'])
 def get_student_parent_income(ID):
     cursor = db.get_db().cursor()
     cursor.execute('SELECT Income FROM Parents WHERE StudentID = {0}'.format(ID))
@@ -50,8 +50,8 @@ def get_student_college_preferences(ID):
     the_response.mimetype = 'application/json'
     return the_response
 
-# Update the students college preferences
-@students.route('/<ID>/updatePreferences', methods=['PUT'])
+# Update the corresponding student's college preferences
+@students.route('/<ID>/collegePreferences', methods=['PUT'])
 def update_student_preferences(ID):
     the_data = request.json
 
@@ -70,11 +70,11 @@ def update_student_preferences(ID):
     return "Successfully updated student preferences!"
 
 
-# Get favorites colleges for a specific student
+# Get the corresponding student's favorites colleges
 @students.route('/<ID>/favoritedColleges', methods=['GET'])
 def get_student_favorite_colleges(ID):
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT CollegeId FROM StudentsFavoritedColleges WHERE StudentID = {0}'.format(ID))
+    cursor.execute('SELECT CollegeID FROM StudentsFavoritedColleges WHERE StudentID = {0}'.format(ID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -85,7 +85,7 @@ def get_student_favorite_colleges(ID):
     the_response.mimetype = 'application/json'
     return the_response
 
-# Add a college to a student's favorited colleged
+# Add to the corresponding student's list of favorited colleges
 @students.route('/<ID>/favoritedColleges', methods=['POST'])
 def add_favorite_colleges(ID):
     the_data = request.json
@@ -102,7 +102,7 @@ def add_favorite_colleges(ID):
 
     return "Successfully added a college to a student's favorited list!"
 
-# Delete a college from a student's favorited colleges
+# Delete from the corresponding student's list of favorite colleges
 @students.route('/<ID>/favoritedColleges', methods=['DELETE'])
 def delete_favorite_colleges(ID):
     the_data = request.json
@@ -119,6 +119,7 @@ def delete_favorite_colleges(ID):
 
     return "Successfully deleted a college from a student's favorited list!"
 
+# Get the corresponding student's high school information
 @students.route('/<ID>/HighSchool', methods=['GET'])
 def get_student_HighSchool(ID):
     cursor = db.get_db().cursor()

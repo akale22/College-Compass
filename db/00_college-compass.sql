@@ -52,11 +52,12 @@ CREATE TABLE Courses
 (
     CourseID INT NOT NULL,
     DeptCode INT NOT NULL,
+    CollegeID INT NOT NULL,
     Credits INT NOT NULL,
     CourseName VARCHAR(30) NOT NULL,
     CourseDescription VARCHAR(700) NOT NULL,
-    CONSTRAINT coursesPK PRIMARY KEY (CourseID, DeptCode),
-    CONSTRAINT coursesFK FOREIGN KEY (DeptCode) REFERENCES Departments(DeptCode)
+    CONSTRAINT coursesPK PRIMARY KEY (CourseID, DeptCode, CollegeID),
+    CONSTRAINT coursesFK FOREIGN KEY (DeptCode, CollegeID) REFERENCES Departments(DeptCode, CollegeID)
         ON UPDATE CASCADE
         ON DELETE CASCADE
 );
@@ -81,11 +82,12 @@ CREATE TABLE Scholarships
 (
     SSCode INT NOT NULL,
     FFCode INT NOT NULL,
+    CollegeID INT NOT NULL,
     ScholarshipName VARCHAR(50) NOT NULL,
     ScholarshipDescription VARCHAR(700) NOT NULL,
     Amount INT NOT NULL,
-    CONSTRAINT scholarshipsPK PRIMARY KEY (SSCode, FFCode),
-    CONSTRAINT scholarshipsFK FOREIGN KEY (FFCode) REFERENCES FinancialPackages(FFCode)
+    CONSTRAINT scholarshipsPK PRIMARY KEY (SSCode, FFCode, CollegeID),
+    CONSTRAINT scholarshipsFK FOREIGN KEY (FFCode, CollegeID) REFERENCES FinancialPackages(FFCode, CollegeID)
         ON UPDATE CASCADE
         ON DELETE CASCADE
 );
@@ -186,10 +188,11 @@ CREATE TABLE CollegePreferences
 DROP TABLE IF EXISTS CollegePrefLocation;
 CREATE TABLE CollegePrefLocation
 (
-    Location VARCHAR(50) NOT NULL,
+    Locations VARCHAR(50) NOT NULL,
     CPID INT NOT NULL,
-    CONSTRAINT prefLocationPK PRIMARY KEY (Location, CPID),
-    CONSTRAINT prefLocationFK FOREIGN KEY (CPID) REFERENCES CollegePreferences(CPID)
+    StudentID INT NOT NULL,
+    CONSTRAINT prefLocationPK PRIMARY KEY (Locations, CPID, StudentID),
+    CONSTRAINT prefLocationFK FOREIGN KEY (CPID, StudentID) REFERENCES CollegePreferences(CPID, StudentID)
         ON UPDATE CASCADE
         ON DELETE CASCADE
 );

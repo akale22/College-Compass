@@ -225,7 +225,7 @@ def update_college_info(ID):
 
     return "Successfully updated college info!"
 
-# Delete a course
+# Delete a course -- doesn't delete based on CollegeID
 @colleges.route('/<ID>/courses', methods=['DELETE'])
 def delete_course(ID):
     the_data = request.json

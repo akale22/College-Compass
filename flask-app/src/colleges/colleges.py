@@ -99,8 +99,11 @@ def add_new_course():
     for row in theData:
         json_data.append(dict(zip(row_headers, row)))
 
-    courseID = str(json_data[0]["MAX(CourseID)"])
-    courseID = int(courseID) + 1
+    courseID = json_data[0]["MAX(CourseID)"]
+    if courseID is None:
+        courseID = 1
+    else:
+        courseID = int(courseID) + 1
 
     the_query = 'INSERT into Courses (CourseID, DeptCode, Credits, CourseName, CourseDescription) VALUES (%s, %s, %s, %s, %s);'
     current_app.logger.info(the_query)
@@ -145,8 +148,11 @@ def add_new_department(ID):
     for row in theData:
         json_data.append(dict(zip(row_headers, row)))
         
-    deptCode = int(json_data[0]["MAX(DeptCode)"])
-    deptCode = deptCode + 1
+    deptCode = json_data[0]["MAX(DeptCode)"]
+    if deptCode is None:
+        deptCode = 1
+    else:
+        deptCode = int(deptCode) + 1
 
     the_query = 'INSERT into Departments (DeptName, DeptCode, CollegeID, DeptRank, DeptDescription) VALUES (%s, %s, %s, %s, %s);'
     current_app.logger.info(the_query)

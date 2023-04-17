@@ -173,5 +173,24 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "ff08099d-9048-4708-9647-e46d89c28c53",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/colleges/151/newDepartment",
+    "url": "localhost:8001/colleges/151/newDepartment",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-17T17:29:22.106Z",
+    "modified": "2023-04-17T17:29:53.975Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"DeptName\": \"Computer Science\",\n  \"DeptRank\": 13,\n  \"DeptDescription\": \"Nothing to see\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

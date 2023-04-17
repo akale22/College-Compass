@@ -4,6 +4,7 @@ from src import db
 
 colleges = Blueprint('colleges', __name__)
 
+# getting college information
 @colleges.route('/<ID>', methods=['GET'])
 def get_college_info(ID):
     cursor = db.get_db().cursor()
@@ -35,6 +36,7 @@ def get_college_departments(ID):
     the_response.mimetype = 'application/json'
     return the_response
 
+# getting course information
 @colleges.route('/<ID>/courses', methods=['GET'])
 def get_college_courses(ID):
     cursor = db.get_db().cursor() 
@@ -81,7 +83,7 @@ def get_all_colleges():
 
 # Add a new course to a college
 @colleges.route('/<ID>/newCourse', methods=['POST'])
-def add_new_college(ID):
+def add_new_course():
     the_data = request.json
     dept_id = the_data['DeptCode']
     credits = the_data['Credits']
@@ -125,7 +127,7 @@ def get_interested_students(ID):
 
 # Add a new department to a college
 @colleges.route('/<ID>/newDepartment', methods=['POST'])
-def add_new_department(ID):
+def add_new_department():
     the_data = request.json
     deptName = the_data["DeptName"]
     deptCode = the_data["DeptCode"]
@@ -146,27 +148,40 @@ def add_new_department(ID):
     deptCode = str(json_data[0]["MAX(DeptCode)"])
     deptCode = int(deptCode) + 1
 
-    the_query = 'INSERT into Departments (DeptName, DeptCode, CollegeID, DeptRank, DeptDescription) VALUES (%s, %s, %s, %s, %s);'
+    the_query = 'INSERT INTO Departments (DeptName, DeptCode, CollegeID, DeptRank, DeptDescription) VALUES (%s, %s, %s, %s, %s);'
     current_app.logger.info(the_query)
     cursor = db.get_db().cursor()
     cursor.execute(the_query, (deptName, deptRank, deptDescription, deptCode, collegeID))
     db.get_db().commit()
 
+    return "Successfully added a new department!"
+
 
 # Add a new college to the college list if it is not already there
-@colleges.route('/<ID>/favoritedColleges', methods=['POST'])
-def add_favorite_colleges(ID):
+@colleges.route('/newCollege', methods=['POST'])
+def add_new_college():
     the_data = request.json
     college_name = the_data['CollegeName']
-    
-    college_id = the_data['CollegeID']
+    enrollment_size = the_data['EnrollmentSize']
+    acceptance_rate = the_data['AcceptanceRate']
 
-    the_query = 'INSERT into StudentsFavoritedColleges (StudentID, CollegeID) VALUES (%s, %s);'
-
-    current_app.logger.info(the_query)
-
+    tempCollegeID = 'SELECT MAX(CollegeID) FROM Colleges'
     cursor = db.get_db().cursor()
-    cursor.execute(the_query, (ID, college_id))
+    cursor.execute(tempCollegeID)
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+
+    college_id = str(json_data[0]["MAX(CollegeID)"])
+    college_id = int(college_id) + 1
+
+    the_query = 'INSERT INTO Colleges (CollegeName, EnrollmentSize, AcceptanceRate, CollegeID) VALUES (%s, %s, %s, %s);'
+    current_app.logger.info(the_query)
+    cursor = db.get_db().cursor()
+    cursor.execute(the_query, (college_name, enrollment_size, acceptance_rate, college_id))
     db.get_db().commit()
 
-    return "Successfully added a college to a student's favorited list!"
+    return "Successfully added a new college!"

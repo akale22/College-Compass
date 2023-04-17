@@ -608,5 +608,43 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "2c01c75b-0d88-4364-a07c-f718744aefcc",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "DELETE Course1",
+    "url": "localhost:8001/colleges/1/courses",
+    "method": "DELETE",
+    "sortNum": 250000,
+    "created": "2023-04-17T20:29:56.037Z",
+    "modified": "2023-04-17T20:34:51.094Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"DeptCode\": 1,\n  \"CourseID\": 1\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "253eb3e6-dfbb-4048-80c7-2e9bab2dbd1d",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "DELETE Course2",
+    "url": "localhost:8001/colleges/100/courses",
+    "method": "DELETE",
+    "sortNum": 260000,
+    "created": "2023-04-17T20:36:20.823Z",
+    "modified": "2023-04-17T20:36:45.889Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"DeptCode\": 2,\n  \"CourseID\": 2\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

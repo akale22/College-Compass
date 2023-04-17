@@ -104,7 +104,7 @@ def add_favorite_colleges(ID):
 
     return "Successfully added a college to a student's favorited list!"
 
-# Delete a college from a student's favorited colleged
+# Delete a college from a student's favorited colleges
 @students.route('/<ID>/favoritedColleges', methods=['DELETE'])
 def delete_favorite_colleges(ID):
     the_data = request.json

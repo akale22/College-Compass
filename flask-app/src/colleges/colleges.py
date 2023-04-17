@@ -192,3 +192,31 @@ def add_new_college():
 
     return "Successfully added a new college!"
 
+# Delete a department
+@colleges.route('/<ID>/departments', methods=['DELETE'])
+def delete_department(ID):
+    the_data = request.json
+    dept_code = the_data['DeptCode']
+    the_query = 'DELETE FROM Departments WHERE CollegeID = %s AND DeptCode = %s;'
+
+    current_app.logger.info(the_query)
+    cursor = db.get_db().cursor()
+    cursor.execute(the_query, (ID, dept_code))
+    db.get_db().commit()
+
+    return "Successfully deleted a department!"
+
+
+# # Delete a course
+# @colleges.route('/<ID>/courses', methods=['DELETE'])
+# def delete_course(ID):
+#     the_data = request.json
+#     dept_code = the_data['DeptCode']
+#     the_query = 'DELETE FROM Departments WHERE CollegeID = %s AND DeptCode = %s;'
+
+#     current_app.logger.info(the_query)
+#     cursor = db.get_db().cursor()
+#     cursor.execute(the_query, (ID, dept_code))
+#     db.get_db().commit()
+
+#     return "Successfully deleted a department!"

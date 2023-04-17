@@ -474,5 +474,43 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "b745af29-9dcd-4cdf-b524-13ab507e72a5",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "DELETE Department 1",
+    "url": "localhost:8001/colleges/150/departments",
+    "method": "DELETE",
+    "sortNum": 170000,
+    "created": "2023-04-17T18:16:56.296Z",
+    "modified": "2023-04-17T18:18:32.401Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"DeptCode\": 300\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "b957b019-cd68-42d8-ad45-3793b6f96f77",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "DELETE Department 2",
+    "url": "localhost:8001/colleges/149/departments",
+    "method": "DELETE",
+    "sortNum": 180000,
+    "created": "2023-04-17T18:20:26.118Z",
+    "modified": "2023-04-17T18:21:03.431Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"DeptCode\": 299\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

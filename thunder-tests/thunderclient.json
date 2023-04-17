@@ -550,5 +550,63 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "85ac0d0a-53c2-4180-9dcb-f9aa7b604844",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "POST College38 Course",
+    "url": "localhost:8001/colleges/38/newCourse",
+    "method": "POST",
+    "sortNum": 115000,
+    "created": "2023-04-17T20:12:50.780Z",
+    "modified": "2023-04-17T20:17:13.580Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"DeptCode\": 23,\n  \"Credits\": 3,\n  \"CourseName\": \"Chemistry II\",\n  \"CourseDescription\": \"Lab work\"\n}\n",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "35a429a3-446a-4543-b45a-b7cda3f28002",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "POST College15 Department",
+    "url": "localhost:8001/colleges/1/newDepartment",
+    "method": "POST",
+    "sortNum": 230000,
+    "created": "2023-04-17T20:18:01.291Z",
+    "modified": "2023-04-17T20:18:53.869Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"DeptName\": \"Businesses\",\n  \"DeptRank\": 32,\n  \"DeptDescription\": \"Pointless\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "19c75d37-8ded-433c-9eda-7526d6f474bd",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "GET All Colleges Query Param2",
+    "url": "localhost:8001/colleges?enrollmentSize=1500",
+    "method": "GET",
+    "sortNum": 240000,
+    "created": "2023-04-17T20:20:11.786Z",
+    "modified": "2023-04-17T20:22:02.920Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "enrollmentSize",
+        "value": "1500",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]

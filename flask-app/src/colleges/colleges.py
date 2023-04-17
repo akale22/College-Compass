@@ -20,11 +20,11 @@ def get_college_info(ID):
     the_response.mimetype = 'application/json'
     return the_response
 
-#just realized we don't have a name for any of the departments so not sure if just a desciption makes sense
+# Get department information
 @colleges.route('/<ID>/departments', methods=['GET'])
 def get_college_departments(ID):
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT DeptRank, DeptDescription FROM Colleges JOIN Departments WHERE Colleges.CollegeID = {0} ORDER BY DeptRank'.format(ID))
+    cursor.execute('SELECT DeptName, DeptRank, DeptDescription FROM Colleges JOIN Departments WHERE Colleges.CollegeID = {0} ORDER BY DeptRank'.format(ID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -36,7 +36,7 @@ def get_college_departments(ID):
     the_response.mimetype = 'application/json'
     return the_response
 
-# getting course information
+# Get course information
 @colleges.route('/<ID>/courses', methods=['GET'])
 def get_college_courses(ID):
     cursor = db.get_db().cursor() 
@@ -53,7 +53,7 @@ def get_college_courses(ID):
     the_response.mimetype = 'application/json'
     return the_response
 
-# get all colleges with query params:
+# Get all colleges with query params:
 @colleges.route('/', methods=['GET'])
 def get_all_colleges():
     cursor = db.get_db().cursor()
@@ -83,7 +83,7 @@ def get_all_colleges():
 
 # Add a new course to a college
 @colleges.route('/<ID>/newCourse', methods=['POST'])
-def add_new_course():
+def add_new_course(ID):
     the_data = request.json
     dept_id = the_data['DeptCode']
     credits = the_data['Credits']

@@ -50,8 +50,6 @@ def get_student_college_preferences(ID):
     the_response.mimetype = 'application/json'
     return the_response
 
-
-
 # Update the students college preferences
 @students.route('/<ID>/updatePreferences', methods=['PUT'])
 def update_student_preferences(ID):

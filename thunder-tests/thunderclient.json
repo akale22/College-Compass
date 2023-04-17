@@ -224,5 +224,24 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "ed38fabb-c6b6-4548-bee4-13de9bf0983f",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "POST College1 Course",
+    "url": "localhost:8001/colleges/1/newCourse",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-04-17T15:15:35.174Z",
+    "modified": "2023-04-17T15:51:57.915Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"DeptCode\": 10,\n  \"Credits\": 12,\n  \"CourseName\": \"World Literature\",\n  \"CourseDescription\": \"Writing\"\n}\n",
+      "form": []
+    },
+    "tests": []
   }
 ]

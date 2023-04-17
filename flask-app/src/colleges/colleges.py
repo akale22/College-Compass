@@ -81,5 +81,38 @@ def get_all_colleges():
     the_response.mimetype = 'application/json'
     return the_response
 
-#another route to get how many students are viewing a college:    
+#another route to get how many students are viewing a college:
 
+# Add a new course to a college
+@colleges.route('/<ID>/newCourse', methods=['POST'])
+def add_new_college(ID):
+    the_data = request.json
+    dept_id = the_data['DeptCode']
+    credits = the_data['Credits']
+    courseName = the_data['CourseName']
+    courseDescription = the_data['CourseDescription']
+    tempCourseID = 'SELECT MAX(CourseID) FROM Courses'
+    cursor = db.get_db().cursor()
+    cursor.execute(tempCourseID)
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+
+    courseID = str(json_data[0]["MAX(CourseID)"])
+    courseID = int(courseID) + 1
+
+    the_query = 'INSERT into Courses (CourseID, DeptCode, Credits, CourseName, CourseDescription) VALUES (%s, %s, %s, %s, %s);'
+    current_app.logger.info(the_query)
+    cursor = db.get_db().cursor()
+    cursor.execute(the_query, (courseID, dept_id, credits, courseName, courseDescription))
+    db.get_db().commit()
+
+    return "Successfully added a course to a college!"
+
+# Add a new department to a college
+
+
+# Add a new college to the college list if it is not already there

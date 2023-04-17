@@ -262,5 +262,33 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "c689569c-3898-455f-b7e1-56ea1dcded50",
+    "colId": "683d5679-5c29-4788-8f7d-ddbc5f41859b",
+    "containerId": "",
+    "name": "GET Student1 HighSchool",
+    "url": "localhost:8001/students/1/HighSchool",
+    "method": "GET",
+    "sortNum": 200000,
+    "created": "2023-04-17T17:36:37.883Z",
+    "modified": "2023-04-17T17:37:07.833Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "b97bb75f-4f68-4eb3-8d54-819a2a8aaeba",
+    "colId": "683d5679-5c29-4788-8f7d-ddbc5f41859b",
+    "containerId": "",
+    "name": "GET Student 38 HighSchool",
+    "url": "localhost:8001/students/38/HighSchool",
+    "method": "GET",
+    "sortNum": 210000,
+    "created": "2023-04-17T17:38:30.429Z",
+    "modified": "2023-04-17T17:38:44.770Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

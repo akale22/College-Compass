@@ -249,11 +249,18 @@
     "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
     "containerId": "",
     "name": "POST College1 Department",
-    "url": "",
-    "method": "GET",
+    "url": "localhost:8001/colleges/150/newDepartment",
+    "method": "POST",
     "sortNum": 30000,
     "created": "2023-04-17T16:34:16.654Z",
-    "modified": "2023-04-17T16:34:16.654Z",
-    "headers": []
+    "modified": "2023-04-17T17:14:41.998Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"DeptName\": \"Computer Science\",\n  \"DeptRank\": 13,\n  \"DeptDescription\": \"Nothing to see\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

@@ -113,6 +113,32 @@ def add_new_college(ID):
     return "Successfully added a course to a college!"
 
 # Add a new department to a college
+@colleges.route('/<ID>/newDepartment', methods=['POST'])
+def add_new_department(ID):
+    the_data = request.json
+    deptName = the_data["DeptName"]
+    deptCode = the_data["DeptCode"]
+    collegeID = the_data["CollegeID"]
+    deptRank = the_data["DeptRank"]
+    deptDescription = the_data["DeptDescription"]
 
+    tempDeptCode = 'SELECT MAX(DeptCode) FROM Departments'
+    cursor = db.get_db().cursor()
+    cursor.execute(tempDeptCode)
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+
+    deptCode = str(json_data[0]["MAX(DeptCode)"])
+    deptCode = int(deptCode) + 1
+
+    the_query = 'INSERT into Departments (DeptName, DeptCode, CollegeID, DeptRank, DeptDescription) VALUES (%s, %s, %s, %s, %s);'
+    current_app.logger.info(the_query)
+    cursor = db.get_db().cursor()
+    cursor.execute(the_query, (deptName, deptRank, deptDescription, deptCode, collegeID))
+    db.get_db().commit()
 
 # Add a new college to the college list if it is not already there

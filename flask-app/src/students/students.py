@@ -121,3 +121,16 @@ def delete_favorite_colleges(ID):
 
     return "Successfully deleted a college from a student's favorited list!"
 
+@students.route('/<ID>/HighSchool', methods=['GET'])
+def get_student_HighSchool(ID):
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT HighSchoolName, SchoolRank, Size FROM Students JOIN HighSchool on Students.SchoolID = HighSchool.SchoolID WHERE StudentID = {0}'.format(ID))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response

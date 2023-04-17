@@ -145,12 +145,12 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2023-04-17T16:58:13.625Z",
-    "modified": "2023-04-17T16:58:13.625Z",
+    "modified": "2023-04-17T17:47:30.112Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "\n  {\n    \"AcceptanceRate\": \"50%\",\n    \"CollegeName\": \"Benemerita Universidad AutÃ³noma de Puebla\",\n    \"EnrollmentSize\": 7752\n  }",
+      "raw": "{\n  \"CollegeName\": \"Northeastern University\",\n  \"EnrollmentSize\": 17000,\n  \"AcceptanceRate\": \"6%\"\n}",
       "form": []
     },
     "tests": []
@@ -164,12 +164,12 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2023-04-17T17:00:05.917Z",
-    "modified": "2023-04-17T17:00:05.917Z",
+    "modified": "2023-04-17T17:47:35.654Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "\n  {\n    \"AcceptanceRate\": \"50%\",\n    \"CollegeName\": \"Benemerita Universidad AutÃ³noma de Puebla\",\n    \"EnrollmentSize\": 7752\n  }",
+      "raw": "{\n  \"CollegeName\": \"Northeastern University\",\n  \"EnrollmentSize\": 17000,\n  \"AcceptanceRate\": \"6%\"\n}",
       "form": []
     },
     "tests": []

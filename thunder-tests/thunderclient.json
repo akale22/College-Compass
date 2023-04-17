@@ -290,5 +290,71 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "661eb5fc-5da6-4725-9438-9eed9c001a79",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "GET Students Interested",
+    "url": "localhost:8001/colleges/94/studentsInterested",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2023-04-17T17:45:14.278Z",
+    "modified": "2023-04-17T17:45:23.014Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "417f808c-2dbd-4669-9f7d-9d52e5231bae",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "POST New College",
+    "url": "localhost:8001/colleges/newCollege",
+    "method": "POST",
+    "sortNum": 60000,
+    "created": "2023-04-17T17:48:42.254Z",
+    "modified": "2023-04-17T17:50:14.264Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"CollegeName\": \"Northeastern University\",\n  \"EnrollmentSize\": 17000,\n  \"AcceptanceRate\": \"6%\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "bb95cf2e-60dd-4b98-937b-0c63c38aded3",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "POST New College 2",
+    "url": "localhost:8001/colleges/newCollege",
+    "method": "POST",
+    "sortNum": 70000,
+    "created": "2023-04-17T17:53:06.027Z",
+    "modified": "2023-04-17T17:53:41.548Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"CollegeName\": \"Rutgers University\",\n  \"EnrollmentSize\": 65000,\n  \"AcceptanceRate\": \"50%\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "98850d8e-fedb-49dc-84f4-714ecdb3cfb9",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "GET Students Interested 2",
+    "url": "localhost:8001/colleges/127/studentsInterested",
+    "method": "GET",
+    "sortNum": 80000,
+    "created": "2023-04-17T17:53:52.587Z",
+    "modified": "2023-04-17T17:55:08.563Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

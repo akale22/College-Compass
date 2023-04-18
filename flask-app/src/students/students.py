@@ -74,7 +74,7 @@ def update_student_preferences(ID):
 @students.route('/<ID>/favoritedColleges', methods=['GET'])
 def get_student_favorite_colleges(ID):
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT CollegeID FROM StudentsFavoritedColleges WHERE StudentID = {0}'.format(ID))
+    cursor.execute('SELECT CollegeName, EnrollmentSize, AcceptanceRate FROM StudentsFavoritedColleges SFC JOIN Colleges C ON SFC.CollegeID = C.CollegeID WHERE StudentID = {0}'.format(ID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -124,6 +124,21 @@ def delete_favorite_colleges(ID):
 def get_student_HighSchool(ID):
     cursor = db.get_db().cursor()
     cursor.execute('SELECT HighSchoolName, SchoolRank, Size FROM Students JOIN HighSchool on Students.SchoolID = HighSchool.SchoolID WHERE StudentID = {0}'.format(ID))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+# Get all the students, necessary for loggin in as a particular student
+@students.route('/', methods=['GET'])
+def get_all_students():
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT FirstName, LastName FROM Students ORDER BY StudentID')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()

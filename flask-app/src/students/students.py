@@ -134,11 +134,11 @@ def get_student_HighSchool(ID):
     the_response.mimetype = 'application/json'
     return the_response
 
-# Get all the students, necessary for loggin in as a particular student
+# Get all the students, necessary for logging in as a particular student
 @students.route('/', methods=['GET'])
 def get_all_students():
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT FirstName, LastName FROM Students ORDER BY StudentID')
+    cursor.execute('SELECT DISTINCT StudentID as label, StudentID as value FROM Students ORDER BY StudentID')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()

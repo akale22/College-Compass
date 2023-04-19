@@ -8,11 +8,11 @@ College Compass was created with the purpose of providing students an opportunit
 
 Within our db directory we have two .sql files that get created with the docker compose:
 
-**college-compass-db:  **
+**college-compass-db:**
 
 This file contains information to create the CollegeCompass database, and grant permissions for web access, and creates the structure for each of our 16 tables
 
-**college-compass-data:  **
+**college-compass-data:**
 
 This file contains the insert statements for each of those tables of various amounts of mockaroo data
 

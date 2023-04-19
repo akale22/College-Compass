@@ -2,6 +2,9 @@
 
 College Compass was created with the purpose of providing students an opportunity to view and favorite specific colleges, and for colleges to view prospective students that are interested in them.
 
+## Demo ##
+[Click here](https://drive.google.com/file/d/1ZnINvUnYWv6FOxOVCZM0xstgnYlJAuCI/view?usp=share_link) for a link to a basic code walkthrough and a demo of the application
+
 ## Overview of code:
 
 ### db:
@@ -63,5 +66,3 @@ Colleges similarly have their own ProfilePage(**College Profile Page**), and can
 1. Build the images with `docker compose build`
 1. Start the containers with `docker compose up`. To run in detached mode, run `docker compose up -d`.
 
-## Demo ##
-[Click here](https://drive.google.com/file/d/1ZnINvUnYWv6FOxOVCZM0xstgnYlJAuCI/view?usp=share_link) for a link to a basic code walkthrough and a demo of the application

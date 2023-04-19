@@ -6,20 +6,20 @@ College Compass was created with the purpose of providing students an opportunit
 
 ### db:
 
-Within our db directory we have two .sql files that get created with the docker compose:
-college-compass-db:
+Within our db directory we have two .sql files that get created with the docker compose:  
+college-compass-db:  
 This file contains information to create the CollegCompass database, and grant permissions for web access, and creates the structure for each of our 17 tables
-college-compass-data:
+college-compass-data:  
 This file contains the insert statements for each of those tables of various amounts of mockaroo data
 
 ### flask-app:
 
-This directory contains two blueprints colleges and students each for our user personas
-colleges.py
+This directory contains two blueprints colleges and students each for our user personas  
+colleges.py  
 Contains all the routes necessary for a college user persona and includes one route for each the main HTTP methods: GET, PUT, POST, DELETE
 Within this file contains the routes to get meta data about a specific college, add and delete new courses for a college, and update necessary information about the college
 
-students.py
+students.py  
 Contains all the routes necessary for a student user persona and also includes one route for each the main HTTP methods: GET, PUT, POST, DELETE
 Within the file contains routes to get necessary information about the student who accessed the route, such as their highschool and statistics, and options to modify their preferences and add and delete favorited colleges
 

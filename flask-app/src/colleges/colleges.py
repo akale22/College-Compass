@@ -4,6 +4,21 @@ from src import db
 
 colleges = Blueprint('colleges', __name__)
 
+# Get all the colleges, necessary for logging in as a particular college
+@colleges.route('/allColleges', methods=['GET'])
+def get_all_colleges():
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT DISTINCT CollegeID as label, CollegeID as value FROM Colleges ORDER BY CollegeID')
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
 # Get the specified college's information
 @colleges.route('/<ID>', methods=['GET'])
 def get_college_info(ID):
@@ -55,7 +70,7 @@ def get_college_courses(ID):
 
 # Get all colleges with the specified query params (filtering based on enrollment)
 @colleges.route('/', methods=['GET'])
-def get_all_colleges():
+def get_all_colleges_params():
     cursor = db.get_db().cursor()
 
     # default value if the user does not supply a parameter

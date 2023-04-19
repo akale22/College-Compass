@@ -646,5 +646,33 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "602bf052-e34a-4b63-a754-53ab5aeda15a",
+    "colId": "683d5679-5c29-4788-8f7d-ddbc5f41859b",
+    "containerId": "",
+    "name": "GET Students",
+    "url": "localhost:8001/students",
+    "method": "GET",
+    "sortNum": 220000,
+    "created": "2023-04-19T01:59:16.891Z",
+    "modified": "2023-04-19T01:59:24.149Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "1e1040ca-1662-4994-884f-7752618ae9b7",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "GET Colleges",
+    "url": "localhost:8001/colleges/allColleges",
+    "method": "GET",
+    "sortNum": 270000,
+    "created": "2023-04-19T02:04:39.369Z",
+    "modified": "2023-04-19T02:05:01.524Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

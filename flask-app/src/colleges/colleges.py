@@ -103,8 +103,6 @@ def add_new_course(ID):
     cursor = db.get_db().cursor()
     cursor.execute(tempCourseID, (ID, dept_code))
 
-    
-
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -113,7 +111,6 @@ def add_new_course(ID):
 
     courseID = json_data[0]["MAX(CourseID)"]
 
-    
     if courseID is None:
         courseID = 1
     else:

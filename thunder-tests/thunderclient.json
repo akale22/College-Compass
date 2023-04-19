@@ -120,12 +120,12 @@
     "method": "PUT",
     "sortNum": 95000,
     "created": "2023-04-16T21:35:48.712Z",
-    "modified": "2023-04-17T20:58:49.144Z",
+    "modified": "2023-04-19T04:58:18.310Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"greek_life\": \"false\",\n  \"size\": \"Big\",\n  \"temp\": \"Cold\"\n}",
+      "raw": "{\n  \"Greek_Life\": \"false\",\n  \"Size\": \"Big\",\n  \"Temperature\": \"Cold\"\n}",
       "form": []
     },
     "tests": []
@@ -139,12 +139,12 @@
     "method": "PUT",
     "sortNum": 120000,
     "created": "2023-04-16T21:45:44.878Z",
-    "modified": "2023-04-17T20:59:43.030Z",
+    "modified": "2023-04-19T04:58:30.192Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"greek_life\": \"true\",\n  \"size\": \"Big\",\n  \"temp\": \"Warm\"\n}",
+      "raw": "{\n  \"Greek_Life\": \"true\",\n  \"Size\": \"Big\",\n  \"Temperature\": \"Warm\"\n}",
       "form": []
     },
     "tests": []
@@ -158,12 +158,12 @@
     "method": "POST",
     "sortNum": 130000,
     "created": "2023-04-16T23:10:31.332Z",
-    "modified": "2023-04-16T23:31:18.838Z",
+    "modified": "2023-04-19T04:21:12.893Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"college_id\": 11\n}",
+      "raw": "{\n  \"CollegeID\": 11\n}",
       "form": []
     },
     "tests": []
@@ -177,12 +177,12 @@
     "method": "POST",
     "sortNum": 150000,
     "created": "2023-04-16T23:17:37.012Z",
-    "modified": "2023-04-16T23:31:32.447Z",
+    "modified": "2023-04-19T05:11:26.653Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"college_id\": 98\n}",
+      "raw": "{\n  \"CollegeID\": 100\n}",
       "form": []
     },
     "tests": []
@@ -196,12 +196,12 @@
     "method": "DELETE",
     "sortNum": 170000,
     "created": "2023-04-16T23:38:21.667Z",
-    "modified": "2023-04-16T23:38:33.701Z",
+    "modified": "2023-04-19T04:13:31.533Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"college_id\": 107\n}\n",
+      "raw": "{\n  \"CollegeID\": 107\n}\n",
       "form": []
     },
     "tests": []
@@ -215,12 +215,12 @@
     "method": "DELETE",
     "sortNum": 190000,
     "created": "2023-04-16T23:39:21.119Z",
-    "modified": "2023-04-16T23:39:44.036Z",
+    "modified": "2023-04-19T04:13:34.847Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"college_id\": 45\n}\n",
+      "raw": "{\n  \"CollegeID\": 45\n}\n",
       "form": []
     },
     "tests": []
@@ -671,6 +671,34 @@
     "sortNum": 270000,
     "created": "2023-04-19T02:04:39.369Z",
     "modified": "2023-04-19T02:05:01.524Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "1929b8fe-e00e-4264-bd59-1de0441b7864",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "Get Total Interested Students College1",
+    "url": "localhost:8001/colleges/1/totalStudentsInterested",
+    "method": "GET",
+    "sortNum": 280000,
+    "created": "2023-04-19T11:54:10.799Z",
+    "modified": "2023-04-19T11:54:21.542Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "5a5d9b25-ec12-4ed3-aece-262d9ad76829",
+    "colId": "1c1b6a95-fb66-41ca-a14f-e507570a8de8",
+    "containerId": "",
+    "name": "Get Total Interested Students College2",
+    "url": "localhost:8001/colleges/2/totalStudentsInterested",
+    "method": "GET",
+    "sortNum": 290000,
+    "created": "2023-04-19T11:55:04.678Z",
+    "modified": "2023-04-19T11:55:11.417Z",
     "headers": [],
     "params": [],
     "tests": []

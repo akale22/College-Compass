@@ -131,7 +131,23 @@ def add_new_course(ID):
 @colleges.route('/<ID>/studentsInterested', methods=['GET'])
 def get_interested_students(ID):
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT studentID FROM StudentsFavoritedColleges WHERE CollegeID = {0}'.format(ID))
+    cursor.execute('SELECT StudentID FROM StudentsFavoritedColleges WHERE CollegeID = {0}'.format(ID))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+# Get the total number of students interested in a specific college
+@colleges.route('/<ID>/totalStudentsInterested', methods=['GET'])
+def get_total_interested_students(ID):
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT COUNT(*) AS Total FROM StudentsFavoritedColleges WHERE CollegeID = {0}'.format(ID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()

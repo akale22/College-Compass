@@ -55,9 +55,9 @@ def get_student_college_preferences(ID):
 def update_student_preferences(ID):
     the_data = request.json
 
-    greek_life = the_data['greek_life']
-    size = the_data['size']
-    temp = the_data['temp']
+    greek_life = the_data['Greek_Life']
+    size = the_data['Size']
+    temp = the_data['Temperature']
 
     the_query = 'UPDATE CollegePreferences SET GreekLife = %s, Size = %s, Temperature = %s WHERE StudentID = %s;'
 
@@ -74,7 +74,7 @@ def update_student_preferences(ID):
 @students.route('/<ID>/favoritedColleges', methods=['GET'])
 def get_student_favorite_colleges(ID):
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT CollegeName, EnrollmentSize, AcceptanceRate FROM StudentsFavoritedColleges SFC JOIN Colleges C ON SFC.CollegeID = C.CollegeID WHERE StudentID = {0}'.format(ID))
+    cursor.execute('SELECT CollegeName, C.CollegeID, EnrollmentSize, AcceptanceRate FROM StudentsFavoritedColleges SFC JOIN Colleges C ON SFC.CollegeID = C.CollegeID WHERE StudentID = {0}'.format(ID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -90,7 +90,7 @@ def get_student_favorite_colleges(ID):
 def add_favorite_colleges(ID):
     the_data = request.json
 
-    college_id = the_data['college_id']
+    college_id = the_data['CollegeID']
 
     the_query = 'INSERT into StudentsFavoritedColleges (StudentID, CollegeID) VALUES (%s, %s);'
 
@@ -107,7 +107,7 @@ def add_favorite_colleges(ID):
 def delete_favorite_colleges(ID):
     the_data = request.json
 
-    college_id = the_data['college_id']
+    college_id = the_data['CollegeID']
 
     the_query = 'DELETE FROM StudentsFavoritedColleges WHERE StudentID = %s AND CollegeID = %s;'
 

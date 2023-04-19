@@ -39,7 +39,7 @@ def get_college_info(ID):
 @colleges.route('/<ID>/departments', methods=['GET'])
 def get_college_departments(ID):
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT DeptName, DeptRank, DeptDescription FROM Colleges JOIN Departments WHERE Colleges.CollegeID = {0} ORDER BY DeptRank'.format(ID))
+    cursor.execute('SELECT DeptName, DeptRank, DeptDescription FROM Colleges C NATURAL JOIN Departments WHERE CollegeID = {0} ORDER BY DeptRank'.format(ID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -56,7 +56,7 @@ def get_college_departments(ID):
 def get_college_courses(ID):
     cursor = db.get_db().cursor() 
     # get college departments, have to join on colleges
-    cursor.execute('SELECT DeptName, CourseName, CourseDescription, Credits FROM Colleges JOIN Departments D JOIN Courses on D.DeptCode = Courses.DeptCode WHERE Colleges.CollegeID = {0}'.format(ID))
+    cursor.execute('SELECT DeptName, CourseName, CourseDescription, Credits FROM Colleges NATURAL JOIN Departments NATURAL JOIN Courses WHERE CollegeID = {0};'.format(ID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()

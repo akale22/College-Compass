@@ -62,3 +62,6 @@ Colleges similarly have their own ProfilePage(**College Profile Page**), and can
 1. In a terminal or command prompt, navigate to the folder with the `docker-compose.yml` file.
 1. Build the images with `docker compose build`
 1. Start the containers with `docker compose up`. To run in detached mode, run `docker compose up -d`.
+
+## Demo ##
+[Click here](https://drive.google.com/file/d/1ZnINvUnYWv6FOxOVCZM0xstgnYlJAuCI/view?usp=share_link) for a link to a basic code walkthrough and a demo of the application
